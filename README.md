@@ -16,5 +16,6 @@ robosys/kadai1/myled.c
     $ sudo chmod 666 /dev/myled0  
     $ echo 0 > /dev/myled0 
     
-## 動画URL(GoogleDrive)
+## 動画URL(GoogleDrive Twitter)
 https://drive.google.com/file/d/1MzeVCcGbIE8eBlQ-GHcbpvl2ZOpzAF7-/view?usp=sharing
+https://twitter.com/karaage5daisuki/status/1205050814277943296

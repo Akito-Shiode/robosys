@@ -4,10 +4,11 @@
 #include <linux/cdev.h>
 #include <linux/device.h>
 #include <linux/uaccess.h>
-#include <linux/io.h>　
+#include <linux/io.h>
+#include <linux/delay.h>
 
 // ライセンス表示
-MODULE_AUTHOR("Ryuichi Ueda");
+MODULE_AUTHOR("Akito Shiode");
 MODULE_DESCRIPTION("driver for LED control");
 MODULE_LICENSE("GPL");
 MODULE_VERSION("0.0.1");
@@ -36,10 +37,47 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
         return -EFAULT;
 
     if(c == '0')
-        gpio_base[10] = 1 << 25;
+        {
+          gpio_base[10] = 1 << 25;
+          msleep(300);
+          gpio_base[7] = 1 << 25;
+          msleep(300);
+          gpio_base[10] = 1 << 25;
+          msleep(300);
+          gpio_base[7] = 1 << 25;
+          msleep(300);
+          gpio_base[10] = 1 << 25;
+          msleep(300);
+          gpio_base[7] = 1 << 25;
+          msleep(300);
+          gpio_base[10] = 1 << 25;
+          msleep(300);
+          gpio_base[7] = 1 << 25;
+          msleep(600);
+          gpio_base[10] = 1 << 25;
+          msleep(300);
+          gpio_base[7] = 1 << 25;
+          msleep(600);
+          gpio_base[10] = 1 << 25;
+          msleep(300);
+          gpio_base[7] = 1 << 25;
+          msleep(600);
+          gpio_base[10] = 1 << 25;
+          msleep(300);
+          gpio_base[7] = 1 << 25;
+          msleep(300);
+          gpio_base[10] = 1 << 25;
+          msleep(300);
+          gpio_base[7] = 1 << 25;
+          msleep(300);
+          gpio_base[10] = 1 << 25;
+          msleep(300);
+          gpio_base[7] = 1 << 25;
+          msleep(300);
+          gpio_base[10] = 1 << 25;
+        }
     else if(c == '1')
         gpio_base[7] = 1 << 25;
-
     return 1;
 }
 
@@ -52,13 +90,13 @@ static struct file_operations led_fops = {
 static int __init init_mod(void)
 {
     int retval;
-
-    gpio_base = ioremap_nocache(0x3f200000, 0xA0);
-
-    const u32 led = 25; //pin番号を変えたい場合ここを変える
+    
+    const u32 led = 25;//pin番号を変えたい場合ここを変える
     const u32 index = led/10;//GPFSEL2
     const u32 shift = (led%10)*3;//15bit
     const u32 mask = ~(0x7 << shift);//11111111111111000111111111111111
+
+    gpio_base = ioremap_nocache(0x3f200000, 0xA0);
     gpio_base[index] = (gpio_base[index] & mask) | (0x1 << shift);//001: output flag
     //11111111111111001111111111111111
 

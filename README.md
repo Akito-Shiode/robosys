@@ -5,7 +5,10 @@ This repository is licensed under the GPLv3 license, see LICENSE.
 
 # 課題1概要
 本デバイスドライバはGPLのもと、アップロードされている。
-また、本ドライバは「0」を書き込むことによってSOSのモールス信号がLEDによって発光するものである。
+<br>また、本ドライバは「0」を書き込むことによってSOSのモールス信号がLEDによって発光するものである。
+
+# ファイル位置
+robosys/kadai1/m
 
 # 操作方法
     $ make  

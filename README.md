@@ -8,7 +8,7 @@ This repository is licensed under the GPLv3 license, see LICENSE.
 <br>また、本ドライバは「0」を書き込むことによってSOSのモールス信号がLEDによって発光するものである。
 
 # ファイル位置
-robosys/kadai1/m
+robosys/kadai1/myled.c
 
 # 操作方法
     $ make  
